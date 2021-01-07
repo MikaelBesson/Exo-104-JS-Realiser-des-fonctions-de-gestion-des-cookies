@@ -16,6 +16,7 @@ function getCookies() {
 }
 
 
+
 /**
  * TODO Cette fonction doit permettre de créer un nouveau cookie avec le nom et la valeur au choix !
  * @param cookieName
@@ -24,8 +25,11 @@ function getCookies() {
 function setCookie(cookieName, cookieValue) {
     // Le cookie doit être valide 2 jours et doit respecter les normes de sécurité contre les failles CSRF.
     // Votre code ici.
-    document.cookie = "theme=dark samesite=strict";
+    let date = new Date(Date.now()+ 172800000);
+    document.cookie = cookieName + cookieValue +"samesite=strict ; expires=" +date.toUTCString();
 }
+setCookie("color","red");
+console.log(document.cookie);
 
 
 /**
@@ -34,14 +38,15 @@ function setCookie(cookieName, cookieValue) {
  */
 function getCookie(cookieName) {
     // Votre code ici.
-    document.cookie = "theme=dark samesite=strict";
+
 }
 
-console.log(getCookies("theme"));
+console.log();
 
 // FIXME Test de setCookie()
-setCookie('theme', 'maValeur');
-console.log(getCookies());
+setCookie();
+console.log(setCookie());
 
 // FIXME test de getCookie(param)
-console.log(getCookies('theme'));
+getCookies();
+console.log(getCookie());
